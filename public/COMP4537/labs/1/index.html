@@ -3,15 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab 1 - Guessing Game</title>
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <h1 class="title">Hello, World!</h1>
-    <h1 class="title">Hello, World!</h1>
-    <h1 class="title">Hello, World!</h1>
+    <title>Lab 1 – Guessing Game</title>
+    <link rel="stylesheet" href="css/style.css" />
 
     <script src="lang/messages/en/user.js" defer></script>
-    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <main id="container">
+      <header class="header">
+        <!-- game title provided within lang/messages/en headerStrings.title -->
+        <h1 class="title">${headerStrings.title}</h1>
+      </header>
+
+      <!-- Buttons will be injected here by JS -->
+      <section id="game-space" class="section">
+        <div id="button-container" aria-live="polite"></div>
+      </section>
+
+      <aside id="game-info">
+        <form id="input-container" novalidate>
+          <label class="area-label" for="user-input"
+            >How many buttons to create?</label
+          >
+          <div class="row-area">
+            <input
+              type="number"
+              id="user-input"
+              name="n"
+              min="3"
+              max="7"
+              inputmode="numeric"
+              placeholder="3 - 7"
+              required
+            />
+            <button id="submit-button" type="submit">Go!</button>
+          </div>
+        </form>
+
+        <section id="stats-container">
+          <h2 class="section-title">Game Stats</h2>
+          <div class="row-area">
+            <div class="column-area">
+              <h3 class="area-label">Moves</h3>
+              <div class="stats" data-stat="moves">—</div>
+            </div>
+            <div class="column-area">
+              <h3 class="area-label">Time</h3>
+              <div class="stats" data-stat="time">—</div>
+            </div>
+            <div class="column-area">
+              <h3 class="area-label">Score</h3>
+              <div class="stats" data-stat="score">—</div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="lang/messages/en/user.js" defer></script>
+    <script src="js/script.js" defer></script>
   </body>
 </html>

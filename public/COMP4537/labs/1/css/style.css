@@ -1,9 +1,233 @@
-body {
-    background-color: #000;
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* =========================
+   Design Tokens (root vars)
+   ========================= */
+:root {
+  /* View Area */
+  --shuffle-area-min-h: 60vh;
+
+  /* Colors */
+  --colour-bg: #050505;
+  --colour-text: #ffffff;
+  --colour-accent: #ce4800;
+  --colour-button-standard: var(--colour-accent);
+  --colour-button-hovered: #ff5722;
+  --colour-button-active: #e64a19;
+  --colour-border: rgba(255, 255, 255, 0.4);
+
+  /* Typography */
+  --font-sans: "Jost", sans-serif;
+  --font-body-text: 1rem; /* base (16px) */
+  --font-control-text: 1.125rem; /* inputs/buttons */
+  --font-h2: 1.75rem;
+  --font-h3: 1.5rem;
+  --font-h4: 1.25rem;
+  --font-title: 2rem;
+
+  /* Radii */
+  --radius-m: 0.5em;
+
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+
+  /* Sizes */
+  --size-button-width: 10em;
+  --size-button-height: 5em;
+  --width-wide: 15em;
+  --width-narrow: 5em;
+
+  /* Motion */
+  --duration-fast: 0.2s;
+  --easing-standard: ease;
 }
 
-.title {
-    color: #fff;
-    text-align: center;
-    margin-top: 50px;
+/* Optional fluid tweaks for small screens */
+@media (max-width: 640px) {
+  :root {
+    --font-title: 1.75rem;
+    --size-button-width: 9em;
+  }
+}
+
+/* ========== Base ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-body-text);
+  line-height: 1.5;
+  color: var(--colour-text);
+  background: var(--colour-bg);
+  padding: var(--space-3);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: var(--space-3);
+}
+
+/* ========== Layout ========== */
+.header {
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+#title {
+  font-size: var(--font-title);
+  font-weight: 700;
+}
+
+#game-space {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+
+  min-height: var(--shuffle-area-min-h);
+  overflow: hidden;
+}
+
+#game-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.section-title {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  font-size: var(--font-h3);
+  text-align: center;
+}
+
+.section {
+  width: 100%;
+  min-height: 50vh;
+  padding: var(--space-2);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius-m);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ========== Controls ========== */
+#input-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  align-items: center;
+  justify-content: center;
+}
+
+.area-label {
+  font-weight: 600;
+  font-size: var(--font-h4);
+  margin-bottom: var(--space-1);
+}
+
+#user-input {
+  text-align: center;
+  font-size: var(--font-control-text);
+  width: var(--width-narrow);
+  padding: var(--space-1);
+  border: 1px solid var(--colour-text);
+  border-radius: var(--radius-m);
+  background: transparent;
+  color: var(--colour-text);
+}
+
+#submit-button {
+  font-size: var(--font-control-text);
+  padding: var(--space-1) var(--space-2);
+  border: none;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  background: var(--colour-button-standard);
+  color: var(--colour-text);
+  transition: background-color var(--duration-fast) var(--easing-standard),
+    transform var(--duration-fast) var(--easing-standard);
+}
+#submit-button:hover {
+  background: var(--colour-button-hovered);
+}
+#submit-button:active {
+  background: var(--colour-button-active);
+  transform: scale(0.96);
+}
+
+/* ========== Stats ========== */
+#stats-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: var(--space-2);
+}
+.row-area {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: space-between;
+}
+.column-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  align-items: center;
+}
+.stats {
+  flex: 1;
+  text-align: center;
+  font-size: var(--font-h2);
+}
+
+/* ========== Buttons Area ========== */
+#button-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+
+  overflow: hidden;
+}
+
+.game-button {
+  width: var(--size-button-width);
+  height: var(--size-button-height);
+  font-size: var(--font-control-text);
+  color: var(--colour-text);
+  background: var(--colour-button-standard);
+  border: none;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--easing-standard),
+    transform var(--duration-fast) var(--easing-standard);
+}
+.game-button:hover {
+  background: var(--colour-button-hovered);
+}
+.game-button:active {
+  background: var(--colour-button-active);
+  transform: scale(0.96);
 }
