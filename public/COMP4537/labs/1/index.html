@@ -15,12 +15,14 @@
         <h1 class="title">${headerStrings.title}</h1>
       </header>
 
-      <!-- Buttons will be injected here by JS -->
+      <!-- buttons injected by JS -->
       <section id="game-space" class="section">
+        <!-- aria-live marks a "live" region for screen readers; area will change after content loaded -->
         <div id="button-container" aria-live="polite"></div>
       </section>
 
       <aside id="game-info">
+        <!-- novalidate disables browser built-in HTML5 validation UI; validation handled in JS personally -->
         <form id="input-container" novalidate>
           <label class="area-label" for="user-input"
             >How many buttons to create?</label
@@ -60,7 +62,7 @@
       </aside>
     </main>
 
-    <script src="lang/messages/en/user.js" defer></script>
+    <!-- defer downloads script in parallel but executes after HTML is parsed; prevents parser blocking -->
     <script src="js/script.js" defer></script>
   </body>
 </html>

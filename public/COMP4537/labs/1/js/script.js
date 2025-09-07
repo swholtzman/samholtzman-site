@@ -1,4 +1,15 @@
+/*!
+ * AI/Copilot Disclosure — Sep 6, 2025
+ * Tools: GitHub Copilot (inline completions, minor syntax/wording), ChatGPT (code review to match course FAQ/assignment conventions).
+ * Scope: Small edits and documentation only; no novel algorithms inserted.
+ * Review: I wrote, tested, and take full responsibility for the code.
+ */
+
 /* ================== Main app code ================== */
+/**
+ * Initializes the memory game.
+ * Sets up event listeners and game elements.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const STR = window.LAB_STRINGS;
   // Set title text from strings
@@ -47,7 +58,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ================== Helpers ================== */
+/**
+ * Pauses execution for a specified duration.
+ *
+ * @param {*} ms - The duration to sleep in milliseconds.
+ * @returns {Promise} - A promise that resolves after the specified duration.
+ */
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+
+/**
+ * Samples a subset of elements from an array without replacement.
+ *
+ * @param {Array} arr - The array to sample from.
+ * @param {number} k - The number of elements to sample.
+ * @returns {Array} - An array containing the sampled elements.
+ */
 const sampleWithoutReplacement = (arr, k) => {
   const clone = [...arr];
   for (let i = clone.length - 1; i > 0; i--) {
@@ -58,6 +83,12 @@ const sampleWithoutReplacement = (arr, k) => {
 };
 
 /* ================== Classes ================== */
+/**
+ * GameButton class represents a button in the memory game.
+ *
+ * @class GameButton
+ * @description Represents a button in the memory game.
+ */
 class GameButton {
   /** order is 1-based display order */
   constructor(order, color) {
@@ -118,6 +149,12 @@ class GameButton {
   }
 }
 
+/**
+ * GameTimer class handles the game timer functionality.
+ *
+ * @class GameTimer
+ * @description Handles the game timer functionality.
+ */
 class GameTimer {
   constructor(outEl) {
     this.outEl = outEl;
@@ -145,6 +182,12 @@ class GameTimer {
   }
 }
 
+/**
+ * Scoreboard class tracks and displays game statistics.
+ *
+ * @class Scoreboard
+ * @description Tracks and displays game statistics.
+ */
 class Scoreboard {
   constructor({ movesEl, scoreEl }) {
     this.movesEl = movesEl;
@@ -176,6 +219,12 @@ class Scoreboard {
   }
 }
 
+/**
+ * MemoryGame class handles the game logic and UI interactions.
+ *
+ * @class MemoryGame
+ * @description Handles the game logic and UI interactions.
+ */
 class MemoryGame {
   constructor({
     buttonContainer,
@@ -279,7 +328,7 @@ class MemoryGame {
       const left = Math.floor(Math.random() * (maxLeft + 1));
       const top = Math.floor(Math.random() * (maxTop + 1));
 
-       b.setAbsolutePosition(left, top, this.gameSpace);
+      b.setAbsolutePosition(left, top, this.gameSpace);
     }
   }
 

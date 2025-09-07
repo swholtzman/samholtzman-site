@@ -1,4 +1,8 @@
-// Strings & constants only (no app logic). Wrapped to avoid globals re-def.
+/* AI-Assist Disclosure — Sep 6, 2025
+   Tool: ChatGPT
+   Scope: Helped select/compose the 21-color palette (palette21). Other code by me.
+*/
+
 (() => {
   if (window.LAB_STRINGS) return;
 

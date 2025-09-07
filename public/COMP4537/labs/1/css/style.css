@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* AI-Assist Disclosure — Sep 6, 2025
+   Tool: ChatGPT
+   Scope: Suggested variable names and extracted repeated values into :root for maintainability.
+   Review: I reviewed and accepted all changes; final code is mine.
+*/
+
 /* =========================
    Design Tokens (root vars)
    ========================= */
@@ -18,12 +24,13 @@
 
   /* Typography */
   --font-sans: "Jost", sans-serif;
-  --font-body-text: 1rem; /* base (16px) */
-  --font-control-text: 1.125rem; /* inputs/buttons */
+  --font-title: 2rem;
   --font-h2: 1.75rem;
   --font-h3: 1.5rem;
   --font-h4: 1.25rem;
-  --font-title: 2rem;
+
+  --font-body-text: 1rem; /* base (16px) */
+  --font-control-text: 1.125rem; /* inputs/buttons */
 
   /* Radii */
   --radius-m: 0.5em;
@@ -44,7 +51,6 @@
   --easing-standard: ease;
 }
 
-/* Optional fluid tweaks for small screens */
 @media (max-width: 640px) {
   :root {
     --font-title: 1.75rem;
