@@ -25,7 +25,7 @@
         <!-- novalidate disables browser built-in HTML5 validation UI; validation handled in JS personally -->
         <form id="input-container" novalidate>
           <label class="area-label" for="user-input"
-            >How many buttons to create?</label
+            >${uiStrings.buttons}</label
           >
           <div class="row-area">
             <input
@@ -38,23 +38,23 @@
               placeholder="3 - 7"
               required
             />
-            <button id="submit-button" type="submit">Go!</button>
+            <button id="submit-button" type="submit">${uiStrings.init}</button>
           </div>
         </form>
 
         <section id="stats-container">
-          <h2 class="section-title">Game Stats</h2>
+          <h2 class="section-title">${uiStrings.gameStats}</h2>
           <div class="row-area">
             <div class="column-area">
-              <h3 class="area-label">Moves</h3>
+              <h3 class="area-label">${uiStrings.moves}</h3>
               <div class="stats" data-stat="moves">—</div>
             </div>
             <div class="column-area">
-              <h3 class="area-label">Time</h3>
+              <h3 class="area-label">${uiStrings.time}</h3>
               <div class="stats" data-stat="time">—</div>
             </div>
             <div class="column-area">
-              <h3 class="area-label">Score</h3>
+              <h3 class="area-label">${uiStrings.score}</h3>
               <div class="stats" data-stat="score">—</div>
             </div>
           </div>

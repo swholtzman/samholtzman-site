@@ -19,6 +19,13 @@
     moves: "Moves",
     time: "Time",
     score: "Score",
+    buttons: "How many buttons to create?",
+    init: "Go!",
+    gameStats: "Game Stats",
+    moves: "Moves",
+    time: "Time",
+    score: "Score",
+
   };
 
   // 21 distinct colours (no duplicates)
