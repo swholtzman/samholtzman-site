@@ -54,16 +54,13 @@
     </aside>
   </main>
 
-  <!-- Your game logic -->
   <script src="js/script.js" defer></script>
 
-  <!-- Tiny bootstrap to copy strings into the DOM once both scripts above are parsed -->
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
       const STR = window.LAB_STRINGS || {};
       const { headerStrings = {}, uiStrings = {} } = STR;
 
-      // Update <title> as well for consistency
       if (headerStrings.title) document.title = headerStrings.title;
 
       const byId = (id) => document.getElementById(id);
