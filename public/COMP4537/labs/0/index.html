@@ -1,68 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab 1 – Guessing Game</title>
-    <link rel="stylesheet" href="css/style.css" />
 
-    <script src="lang/messages/en/user.js" defer></script>
-  </head>
-  <body>
-    <main id="container">
-      <header class="header">
-        <!-- game title provided within lang/messages/en headerStrings.title -->
-        <h1 class="title">${headerStrings.title}</h1>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 1 – Guessing Game</title>
+  <link rel="stylesheet" href="css/style.css" />
 
-      <!-- buttons injected by JS -->
-      <section id="game-space" class="section">
-        <!-- aria-live marks a "live" region for screen readers; area will change after content loaded -->
-        <div id="button-container" aria-live="polite"></div>
+  <!-- Loads strings into window.LAB_STRINGS -->
+  <script src="lang/messages/en/user.js" defer></script>
+</head>
+
+<body>
+  <main id="container">
+    <header class="header">
+      <!-- Populated from LAB_STRINGS.headerStrings.title -->
+      <h1 class="title" id="title"></h1>
+    </header>
+
+    <!-- buttons injected by JS -->
+    <section id="game-space" class="section">
+      <div id="button-container" aria-live="polite"></div>
+    </section>
+
+    <aside id="game-info">
+      <!-- novalidate disables native UI; validation is handled in JS -->
+      <form id="input-container" novalidate>
+        <label class="area-label" for="user-input" id="label-buttons"></label>
+        <div class="row-area">
+          <input type="number" id="user-input" name="n" min="3" max="7" inputmode="numeric" placeholder="3 - 7"
+            required />
+          <button id="submit-button" type="submit"></button>
+        </div>
+      </form>
+
+      <section id="stats-container">
+        <h2 class="section-title" id="game-stats-title"></h2>
+        <div class="row-area">
+          <div class="column-area">
+            <h3 class="area-label" id="label-moves"></h3>
+            <div class="stats" data-stat="moves">—</div>
+          </div>
+          <div class="column-area">
+            <h3 class="area-label" id="label-time"></h3>
+            <div class="stats" data-stat="time">—</div>
+          </div>
+          <div class="column-area">
+            <h3 class="area-label" id="label-score"></h3>
+            <div class="stats" data-stat="score">—</div>
+          </div>
+        </div>
       </section>
+    </aside>
+  </main>
 
-      <aside id="game-info">
-        <!-- novalidate disables browser built-in HTML5 validation UI; validation handled in JS personally -->
-        <form id="input-container" novalidate>
-          <label class="area-label" for="user-input"
-            >How many buttons to create?</label
-          >
-          <div class="row-area">
-            <input
-              type="number"
-              id="user-input"
-              name="n"
-              min="3"
-              max="7"
-              inputmode="numeric"
-              placeholder="3 - 7"
-              required
-            />
-            <button id="submit-button" type="submit">Go!</button>
-          </div>
-        </form>
+  <!-- Your game logic -->
+  <script src="js/script.js" defer></script>
 
-        <section id="stats-container">
-          <h2 class="section-title">Game Stats</h2>
-          <div class="row-area">
-            <div class="column-area">
-              <h3 class="area-label">Moves</h3>
-              <div class="stats" data-stat="moves">—</div>
-            </div>
-            <div class="column-area">
-              <h3 class="area-label">Time</h3>
-              <div class="stats" data-stat="time">—</div>
-            </div>
-            <div class="column-area">
-              <h3 class="area-label">Score</h3>
-              <div class="stats" data-stat="score">—</div>
-            </div>
-          </div>
-        </section>
-      </aside>
-    </main>
+  <!-- Tiny bootstrap to copy strings into the DOM once both scripts above are parsed -->
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const STR = window.LAB_STRINGS || {};
+      const { headerStrings = {}, uiStrings = {} } = STR;
 
-    <!-- defer downloads script in parallel but executes after HTML is parsed; prevents parser blocking -->
-    <script src="js/script.js" defer></script>
-  </body>
+      // Update <title> as well for consistency
+      if (headerStrings.title) document.title = headerStrings.title;
+
+      const byId = (id) => document.getElementById(id);
+      byId("title").textContent = headerStrings.title || "";
+      byId("label-buttons").textContent = uiStrings.buttons || "";
+      byId("submit-button").textContent = uiStrings.init || "";
+      byId("game-stats-title").textContent = uiStrings.gameStats || "";
+      byId("label-moves").textContent = uiStrings.moves || "";
+      byId("label-time").textContent = uiStrings.time || "";
+      byId("label-score").textContent = uiStrings.score || "";
+    });
+  </script>
+</body>
+
 </html>

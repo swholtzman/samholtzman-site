@@ -46,13 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const n = Number(input.value);
+    e.preventDefault();   // stop the default form submission (page reload/redirect)
+
+    const n = Number(input.value);   // get the number typed into the input field
+
+    // validate: must be an integer and within configured min/max bounds
     if (!Number.isInteger(n) || n < STR.CONFIG.MIN_N || n > STR.CONFIG.MAX_N) {
-      game.flash(STR.uiStrings.invalidRange);
-      input.focus();
-      return;
+      game.flash(STR.uiStrings.invalidRange);  // show an error message (e.g., “Invalid range”)
+      input.focus();                            // put the cursor back in the input box
+      return;                                   // exit without continuing
     }
+
+    // if valid, start the game with that number
     game.start(n);
   });
 });
