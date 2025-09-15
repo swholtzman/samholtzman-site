@@ -2,6 +2,7 @@
    Tool: GitHub Copilot / ChatGPT
    Scope: Strings & config only.
 */
+
 (() => {
   if (window.LAB_STRINGS) return;
 

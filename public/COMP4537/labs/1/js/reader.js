@@ -1,4 +1,11 @@
-/* Disclose ChatGPT usage per course policy */
+/* AI-Assist Disclosure — Sep 14, 2025
+   Tools: ChatGPT (GPT-5 Thinking); GitHub Copilot
+   Scope: Assistance in organization and removal of redundant code.
+   Details: Streamlined note rendering and event handling logic, removing excess code and refining structure for clarity.
+    Note: Original code contained redundant functions and overly complex structures; these have been simplified while maintaining original functionality.
+    Additionally, provided detailed comments for clarity.
+
+*/
 
 (function () {
   "use strict";
