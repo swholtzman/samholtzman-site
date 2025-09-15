@@ -1,12 +1,24 @@
-/* Disclose ChatGPT usage per course policy */
+
 
 (function () {
   "use strict";
 
   // ===== Utilities =====
+
+  /***
+   * Returns current time as ISO string.
+   * Used for timestamps in notes and state.
+   * Returns ISO string like "2024-06-15T12:34:56.789Z"
+   */
   function nowIso() {
     return new Date().toISOString();
   }
+
+  /***
+   * Formats an ISO timestamp string into a human-readable format.
+   * If parsing fails, returns the original string.
+   * Uses the specified locale (default "en-CA").
+   */
   function formatTime(iso, locale = "en-CA") {
     try {
       return new Date(iso).toLocaleString(locale);
@@ -15,19 +27,33 @@
     }
   }
 
-  // Simple debounce helper
+  /***
+   * Returns a debounced version of the given function.
+   * The debounced function delays invoking `fn` until after `wait` milliseconds
+   * have elapsed since the last time the debounced function was invoked.
+   */
   function debounce(fn, wait) {
-    let timeout;
+    let timeout; // Timer ID
     return function (...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => fn.apply(this, args), wait);
+      clearTimeout(timeout); // Cancel previous timer if any
+      timeout = setTimeout(() => fn.apply(this, args), wait); // Set new timer
     };
   }
 
   // ===== Storage Layer (OOP style) =====
+  /***
+   * NotesStore: abstraction over localStorage for notes.
+   * Handles reading and writing the entire state object.
+   * State shape: {version, updatedAt, notes: []}
+   * Each note: {id, text, updatedAt}
+   * Uses a single localStorage key as specified.
+   * Handles JSON parsing/stringifying and defaults.
+   * Does NOT do any in-memory caching; always reads/writes to localStorage.
+   * Does NOT handle concurrency or merging; last write wins.
+   */
   class NotesStore {
     constructor(storageKey) {
-      this.storageKey = storageKey;
+      this.storageKey = storageKey; // Need this due to JS lack of private fields
     }
     read() {
       const raw = localStorage.getItem(this.storageKey);
@@ -35,20 +61,31 @@
       try {
         const parsed = JSON.parse(raw);
         // Defensive defaults
-        parsed.version ??= 0;
-        parsed.updatedAt ??= null;
-        parsed.notes ??= [];
+        parsed.version ??= 0; // Version number; Can be any integer
+        parsed.updatedAt ??= null; // Last updated timestamp; ISO string or null
+        parsed.notes ??= []; // Notes array; each note: {id, text, updatedAt}
         return parsed;
       } catch {
         return { version: 0, updatedAt: null, notes: [] };
       }
     }
+    /***
+     * Writes the entire state object to localStorage.
+     * Overwrites any existing data.
+     * Expects state shape: {version, updatedAt, notes: []}
+     * Does not validate the shape; assumes caller provides correct data.
+     */
     write(state) {
       localStorage.setItem(this.storageKey, JSON.stringify(state));
     }
   }
 
   // Domain object (constructor pattern)
+  /***
+   * Note object representing a single note.
+   * Each note has a unique id, text content, and updatedAt timestamp.
+   * The updatedAt is set to current time if not provided.
+   */
   class Note {
     constructor(id, text, updatedAt) {
       this.id = id;

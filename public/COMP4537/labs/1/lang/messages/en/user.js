@@ -10,6 +10,7 @@
     to_index: "Back",
     to_reader: "Read",
     to_writer: "Write",
+    add_note: "Add Note",
   };
 
   const uiStrings = {
