@@ -3,20 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab 1: JSON and Local Storage</title>
+    <title>Lab 1: Note Reader</title>
 
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- Loads strings into window.LAB_STRINGS -->
     <script src="lang/messages/en/user.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/reader.js" defer></script>
+
   </head>
   <body>
     <main id="container">
       <header class="header">
         <!-- Populated from LAB_STRINGS.headerStrings.title -->
         <h1 class="title" id="title"></h1>
+        <span id="last_retrieved_time"></span>
       </header>
+      <section id="content" class="section">
+        <div class="note-container" id="note_list" aria-live="polite">
+          <div class="note-list">
+            <!-- Notes injected by JS -->
+            <!-- <div class="note-item">
+              <p class="note-text">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Inventore quod ullam nam enim corporis velit sequi, architecto
+                aut quo perspiciatis tenetur ipsa odit modi debitis
+                exercitationem impedit quasi necessitatibus ipsum.
+              </p>
+            </div>
+            <div class="note-item">
+              <p class="note-text">Sample Note 1</p>
+            </div>
+            <div class="note-item">
+              <p class="note-text">Sample Note 1</p>
+            </div> -->
+          </div>
+        </div>
+        <div id="button-container" aria-live="polite">
+          <!-- buttons injected by JS -->
+          <a class="link-button" id="to_index" href="index.html">
+            <!-- Injected Button Name "Back" -->
+          </a>
+        </div>
+      </section>
     </main>
-    <script src="js/script.js" defer></script>
   </body>
 </html>

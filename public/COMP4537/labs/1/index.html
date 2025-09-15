@@ -9,6 +9,8 @@
 
     <!-- Loads strings into window.LAB_STRINGS -->
     <script src="lang/messages/en/user.js" defer></script>
+    <!-- Populates text from LAB_STRINGS when DOM is ready -->
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <main id="container">
@@ -16,18 +18,17 @@
         <!-- Populated from LAB_STRINGS.headerStrings.title -->
         <h1 class="title" id="title"></h1>
       </header>
-      <section id="game-space" class="section">
+      <section id="content" class="section">
         <div id="button-container" aria-live="polite">
           <!-- buttons injected by JS -->
-          <button id="to_reader" link="reader.html">
+          <a class="link-button" id="to_reader" href="reader.html">
             <!-- Injected Button Name "Read" -->
-          </button>
-          <button id="to_writer" link="writer.html">
+          </a>
+          <a class="link-button" id="to_writer" href="writer.html">
             <!-- Injected Button Name "Write" -->
-          </button>
+          </a>
         </div>
       </section>
     </main>
-    <script src="js/script.js" defer></script>
   </body>
 </html>
