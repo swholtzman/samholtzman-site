@@ -11,7 +11,6 @@
   "use strict";
 
   // ===== Utilities =====
-
   /**
    * Get the current time as an ISO 8601 string.
    * Used for both global state and per-note timestamps.
@@ -88,6 +87,7 @@
         parsed.updatedAt ??= null; // Last updated timestamp; ISO string or null
         parsed.notes ??= []; // Notes array; each note: {id, text, updatedAt}
         return parsed;
+
       } catch {
         return { version: 0, updatedAt: null, notes: [] };
       }
@@ -115,17 +115,13 @@
      * @param {string} [updatedAt]
      */
     constructor(id, text, updatedAt) {
-      /** @type {string} */
       this.id = id;
-      /** @type {string} */
       this.text = text;
-      /** @type {string} */
       this.updatedAt = updatedAt || nowIso();
     }
   }
 
   // ===== Writer App =====
-
   /**
    * Interactive writer/editor for notes backed by localStorage.
    * Responsibilities:
@@ -253,14 +249,14 @@
     }
 
     /**
- * Add a new empty note:
- * - Generate UUID
- * - Push into state
- * - Bump version and update timestamps
- * - Render and persist immediately (structural change)
- *
- * @this {WriterApp}
- */
+     * Add a new empty note:
+     * - Generate UUID
+     * - Push into state
+     * - Bump version and update timestamps
+     * - Render and persist immediately (structural change)
+     *
+     * @this {WriterApp}
+     */
     handleAdd = function () {
       const id = crypto.randomUUID();
       const newNote = new Note(id, "");
