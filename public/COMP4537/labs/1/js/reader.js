@@ -10,6 +10,9 @@
 (function () {
   "use strict";
 
+  /***
+   * 
+   */
   function formatTime(iso, locale = "en-CA") {
     try {
       return new Date(iso).toLocaleString(locale);
@@ -18,6 +21,9 @@
     }
   }
 
+  /***
+   * 
+   */
   class NotesStore {
     constructor(storageKey) {
       this.storageKey = storageKey;
@@ -37,6 +43,9 @@
     }
   }
 
+  /***
+   * 
+   */
   class ReaderApp {
     constructor(opts) {
       this.STR = opts.STR;
@@ -107,6 +116,9 @@
     }
   }
 
+  /***
+   * 
+   */
   ReaderApp.prototype.handleExternalStorage = function (evt) {
     // Only care about our key
     const key = this.STR.CONFIG.storageKey;

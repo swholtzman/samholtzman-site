@@ -76,6 +76,7 @@
         return { version: 0, updatedAt: null, notes: [] };
       }
     }
+
     /***
      * Writes the entire state object to localStorage.
      * Overwrites any existing data.
@@ -129,6 +130,7 @@
 
       this.init();
     }
+
     init() {
       // Ensure UI strings are applied (no hardcoded HTML words)
       if (this.addBtn) this.addBtn.textContent = this.STR.uiStrings.addNote;
@@ -145,6 +147,7 @@
       // Wire add button
       if (this.addBtn) this.addBtn.addEventListener("click", this.handleAdd);
     }
+
     renderNote(note) {
       const item = document.createElement("div");
       item.className = "note-item";
@@ -213,6 +216,9 @@
     this.persist();
   };
 
+  /***
+   * 
+   */
   WriterApp.prototype.handleInput = function (evt) {
     const item = evt.currentTarget.closest(".note-item");
     if (!item) return;
