@@ -27,8 +27,6 @@
     }
   }
 
-
-
   /**
    * Thin wrapper around localStorage for retrieving the notes payload.
    * - Read-only in this module (writer code is expected to handle writes).

@@ -252,82 +252,80 @@
       )}`;
     }
 
-      /**
-   * Add a new empty note:
-   * - Generate UUID
-   * - Push into state
-   * - Bump version and update timestamps
-   * - Render and persist immediately (structural change)
-   *
-   * @this {WriterApp}
-   */
-  handleAdd = function () {
-    const id = crypto.randomUUID();
-    const newNote = new Note(id, "");
-    this.state.notes.push(newNote);
-    this.state.version += 1;
-    this.state.updatedAt = nowIso();
-    this.renderNote(newNote);
-    this.persist(); // immediate persist on structure changes
-  };
+    /**
+ * Add a new empty note:
+ * - Generate UUID
+ * - Push into state
+ * - Bump version and update timestamps
+ * - Render and persist immediately (structural change)
+ *
+ * @this {WriterApp}
+ */
+    handleAdd = function () {
+      const id = crypto.randomUUID();
+      const newNote = new Note(id, "");
+      this.state.notes.push(newNote);
+      this.state.version += 1;
+      this.state.updatedAt = nowIso();
+      this.renderNote(newNote);
+      this.persist(); // immediate persist on structure changes
+    };
 
-  /**
-   * Remove a note:
-   * - Identify owning .note-item from the clicked delete button
-   * - Remove from state and DOM
-   * - Bump version, update timestamps, persist immediately
-   *
-   * @this {WriterApp}
-   * @param {MouseEvent} evt
-   */
-  handleRemove = function (evt) {
-    const item = evt.currentTarget.closest(".note-item");
-    if (!item) return;
-    const id = item.dataset.id;
+    /**
+     * Remove a note:
+     * - Identify owning .note-item from the clicked delete button
+     * - Remove from state and DOM
+     * - Bump version, update timestamps, persist immediately
+     *
+     * @this {WriterApp}
+     * @param {MouseEvent} evt
+     */
+    handleRemove = function (evt) {
+      const item = evt.currentTarget.closest(".note-item");
+      if (!item) return;
+      const id = item.dataset.id;
 
-    // Remove from state
-    this.state.notes = this.state.notes.filter(
-      (n) => String(n.id) !== String(id)
-    );
-    this.state.version += 1;
-    this.state.updatedAt = nowIso();
+      // Remove from state
+      this.state.notes = this.state.notes.filter(
+        (n) => String(n.id) !== String(id)
+      );
+      this.state.version += 1;
+      this.state.updatedAt = nowIso();
 
-    // Remove from DOM
-    this.noteInputs.delete(id);
-    item.remove();
+      // Remove from DOM
+      this.noteInputs.delete(id);
+      item.remove();
 
-    // Persist instantly per spec
-    this.persist();
-  };
+      // Persist instantly per spec
+      this.persist();
+    };
 
-  /**
-   * Handle text input in a note:
-   * - Find note by item dataset id
-   * - Update text and note.updatedAt
-   * - Bump state.version, set state.updatedAt
-   * - Persist via debounce (avoid excessive writes on keystrokes)
-   *
-   * @this {WriterApp}
-   * @param {InputEvent} evt
-   */
-  handleInput = function (evt) {
-    const item = evt.currentTarget.closest(".note-item");
-    if (!item) return;
-    const id = item.dataset.id;
-    const note = this.state.notes.find((n) => String(n.id) === String(id));
-    if (!note) return;
-    note.text = evt.currentTarget.value;
-    note.updatedAt = nowIso();
-    // Do not save on every keystroke: debounce
-    this.state.version += 1;
-    this.state.updatedAt = note.updatedAt;
+    /**
+     * Handle text input in a note:
+     * - Find note by item dataset id
+     * - Update text and note.updatedAt
+     * - Bump state.version, set state.updatedAt
+     * - Persist via debounce (avoid excessive writes on keystrokes)
+     *
+     * @this {WriterApp}
+     * @param {InputEvent} evt
+     */
+    handleInput = function (evt) {
+      const item = evt.currentTarget.closest(".note-item");
+      if (!item) return;
+      const id = item.dataset.id;
+      const note = this.state.notes.find((n) => String(n.id) === String(id));
+      if (!note) return;
+      note.text = evt.currentTarget.value;
+      note.updatedAt = nowIso();
+      // Do not save on every keystroke: debounce
+      this.state.version += 1;
+      this.state.updatedAt = note.updatedAt;
 
-    // Do not save on every keystroke: debounce
-    this.persistDebounced();
-  };
+      // Do not save on every keystroke: debounce
+      this.persistDebounced();
+    };
   }
-
-
 
   // ===== Bootstrapping =====
   // Wait for DOM to be ready, then initialize the writer with strings/config.
