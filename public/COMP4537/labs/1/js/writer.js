@@ -251,9 +251,8 @@
         this.locale
       )}`;
     }
-  }
 
-  /**
+      /**
    * Add a new empty note:
    * - Generate UUID
    * - Push into state
@@ -262,7 +261,7 @@
    *
    * @this {WriterApp}
    */
-  WriterApp.prototype.handleAdd = function () {
+  handleAdd = function () {
     const id = crypto.randomUUID();
     const newNote = new Note(id, "");
     this.state.notes.push(newNote);
@@ -281,7 +280,7 @@
    * @this {WriterApp}
    * @param {MouseEvent} evt
    */
-  WriterApp.prototype.handleRemove = function (evt) {
+  handleRemove = function (evt) {
     const item = evt.currentTarget.closest(".note-item");
     if (!item) return;
     const id = item.dataset.id;
@@ -311,7 +310,7 @@
    * @this {WriterApp}
    * @param {InputEvent} evt
    */
-  WriterApp.prototype.handleInput = function (evt) {
+  handleInput = function (evt) {
     const item = evt.currentTarget.closest(".note-item");
     if (!item) return;
     const id = item.dataset.id;
@@ -326,6 +325,9 @@
     // Do not save on every keystroke: debounce
     this.persistDebounced();
   };
+  }
+
+
 
   // ===== Bootstrapping =====
   // Wait for DOM to be ready, then initialize the writer with strings/config.

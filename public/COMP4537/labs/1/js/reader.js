@@ -202,27 +202,26 @@
         this.locale
       )}`;
     }
+
+    /**
+ * Handle cross-tab `storage` events.
+ * We only care about events for our storage key. If they match, we check whether
+ * the version changed and re-render if needed.
+ *
+ * Notes:
+ * - This event does NOT fire in the same tab that called localStorage.setItem().
+ * - It *does* fire in other tabs/windows from the same origin.
+ *
+ * @this {ReaderApp}
+ * @param {StorageEvent} evt - The storage event payload.
+ */
+    handleExternalStorage = function (evt) {
+      // Only react to our configured key to avoid unrelated storage noise
+      const key = this.STR.CONFIG.storageKey;
+      if (evt.key !== key) return;
+      this.refreshIfChanged();
+    };
   }
-
-
-  /**
-   * Handle cross-tab `storage` events.
-   * We only care about events for our storage key. If they match, we check whether
-   * the version changed and re-render if needed.
-   *
-   * Notes:
-   * - This event does NOT fire in the same tab that called localStorage.setItem().
-   * - It *does* fire in other tabs/windows from the same origin.
-   *
-   * @this {ReaderApp}
-   * @param {StorageEvent} evt - The storage event payload.
-   */
-  ReaderApp.prototype.handleExternalStorage = function (evt) {
-    // Only react to our configured key to avoid unrelated storage noise
-    const key = this.STR.CONFIG.storageKey;
-    if (evt.key !== key) return;
-    this.refreshIfChanged();
-  };
 
   // ===== Bootstrapping =====
   // Wait for DOM to be ready, then initialize the reader app with strings/config.
