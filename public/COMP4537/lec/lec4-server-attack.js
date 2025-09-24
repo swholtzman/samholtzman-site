@@ -8,7 +8,7 @@ const PORT = 8000;
 const FUNNY_REDIRECT = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // harmless rickroll
 const RATE_LIMIT_WINDOW_MS = 60_000;        // 1 minute
 const RATE_LIMIT_MAX = 30;                  // max requests per IP per window
-const SECRET_TOKEN = "let-me-in";           // try: /secret?token=let-me-in
+const SECRET_TOKEN = "general-kenobi";         
 // --------------------------------
 
 /** Very tiny in-memory rate limiter */
