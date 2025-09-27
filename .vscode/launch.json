@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Lab 3: app.js",
+      "program": "${workspaceFolder}/public/COMP4537/labs/3/app.js",
+      "cwd": "${workspaceFolder}/public/COMP4537/labs/3",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
