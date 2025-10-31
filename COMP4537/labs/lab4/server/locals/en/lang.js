@@ -1,0 +1,7 @@
+export const STRING_INVALID_MESSAGE = "Strings cannot be whitespace only or contain numbers."
+export const QUERY_PARAM_MISSING = "Query parameter '%1' missing."
+export const DEFINITION_NOT_FOUND = "'%1' does not have a definition."
+export const POST_BAD_REQUEST_FIELDS = "One or more of fields '%1' are missing from payload or have the wrong type."
+export const POST_BAD_REQUEST_JSON = "Payload has malformed JSON."
+export const DEFINITION_EXISTS = "The definition for '%1' already exists."
+export const NEW_ENTRY = "Request #%4 New entry recorded:\n%1: %2\nTotal words: %3"

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search Definition</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script defer src="/static/ajax.js"></script>
+  </head>
+  <body>
+    <main class="page_container">
+      <h1>Search the Dictionary</h1>
+
+      <form class="form_container" id="searchForm" novalidate>
+        <label for="searchWordInput">Word</label>
+        <input
+          id="searchWordInput"
+          name="word"
+          type="text"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="results_container">
+        <h2>Search Results</h2>
+        <div id="searchFeedback" aria-live="polite"></div>
+      </div>
+
+      <button class="return_button" onclick="window.location.href='store.html'">
+        Return to Store
+      </button>
+    </main>
+  </body>
+</html>

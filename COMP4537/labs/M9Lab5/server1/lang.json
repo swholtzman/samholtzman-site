@@ -1,0 +1,6 @@
+{
+    "sending": "Sending query...",
+    "errorPrefix": "Error: ",
+    "emptyQuery": "Please enter a SQL query.",
+    "unsupportedQuery": "Error: Only SELECT and INSERT queries are supported."
+}

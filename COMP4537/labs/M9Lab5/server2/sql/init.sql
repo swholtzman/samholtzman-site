@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS comp4537_lab5;
+
+CREATE TABLE IF NOT EXISTS comp4537_lab5.patient (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    date_of_birth DATETIME
+);
+
+GRANT SELECT, INSERT ON comp4537_lab5.patient TO ?@'localhost';

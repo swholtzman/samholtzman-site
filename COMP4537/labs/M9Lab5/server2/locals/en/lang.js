@@ -1,0 +1,5 @@
+export const MISSING_SEARCH_PARAM = "Missing query."
+export const MISSING_BODY_PARAM = "Missing field in body '%1'."
+export const WRONG_SQL_QUERY = "'%1' is not allowed for %2 requests."
+export const POST_BAD_REQUEST_JSON = "Payload has malformed JSON: %1"
+export const MALFORMED_URL = "URL SQL query is malformed or not encoded correctly: %1"
