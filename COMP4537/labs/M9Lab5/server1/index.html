@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ISA Lab 5</title>
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <main>
-      <h1>Welcome to ISA Lab 5</h1>
-      <!-- This page should have two functions:
-       1. A button for submitting a static POST request -->
-      <button id="static-post-btn">Submit Static POST Request</button>
 
-      <!--  2.1 A text field for writing a SQL query and a submit button that will submit the query to the server.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-lang="pageTitle">Loading...</title>
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <h1 data-lang="header"></h1>
+    <!-- This page should have two functions:
+       1. A button for submitting a static POST request -->
+    <button id="static-post-btn" data-lang="staticPostButton"></button>
+    <!--  2.1 A text field for writing a SQL query and a submit button that will submit the query to the server.
        2.2 The returned query can be rendered as json in a pre tag-->
-      <form id="query-form">
-        <label for="query-input">Enter SQL Query:</label><br />
-        <textarea
-          id="query-input"
-          name="sql-query"
-          rows="4"
-          cols="50"
-        ></textarea>
-        <br />
-        <button type="submit" id="submit-query-btn">Submit Query</button>
-      </form>
-      <pre id="query-result"></pre>
-    </main>
-  </body>
+    <form id="query-form">
+      <label for="query-input" data-lang="queryLabel"></label><br />
+      <textarea id="query-input" name="sql-query" rows="4" cols="50"></textarea>
+      <br />
+      <button type="submit" id="submit-query-btn" data-lang="submitQueryButton"></button>
+    </form>
+    <pre id="query-result"></pre>
+  </main>
+</body>
+
 </html>

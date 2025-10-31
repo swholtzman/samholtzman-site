@@ -120,7 +120,7 @@ class Server {
                     return
                 }
             }
-            
+
             res.setHeader("content-type", "application/json")
             res.statusCode = 200
             res.end(returnString)
